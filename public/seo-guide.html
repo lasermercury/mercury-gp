@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Mercury GP — Google & SEO/GEO/AIO Setup Guide</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a1628;color:#e2e8f0;line-height:1.7;padding:24px;max-width:800px;margin:0 auto}
+  h1{font-size:24px;color:#3b7dd8;margin-bottom:4px}
+  h2{font-size:18px;color:#3b7dd8;margin:32px 0 8px;padding-bottom:6px;border-bottom:1px solid rgba(59,125,216,.2)}
+  h2 .badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle;font-weight:600}
+  .done{background:rgba(16,185,129,.15);color:#34d399}
+  .pending{background:rgba(245,158,11,.15);color:#fbbf24}
+  .optional{background:rgba(148,163,184,.15);color:#94a3b8}
+  .progress{background:#1e293b;border-radius:99px;height:6px;margin:12px 0 24px;overflow:hidden}
+  .progress-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,#3b7dd8,#34d399);width:56%}
+  .progress-text{font-size:12px;color:#64748b;margin-bottom:4px}
+  ol{padding-left:20px;margin:8px 0}
+  li{margin-bottom:8px;font-size:14px}
+  code{background:#1e293b;padding:2px 6px;border-radius:4px;font-size:13px;color:#7dd3fc}
+  pre{background:#0f172a;border:1px solid #1e3a5f;border-radius:8px;padding:12px 16px;margin:8px 0 12px;overflow-x:auto;position:relative}
+  pre code{background:none;padding:0;color:#93c5fd;font-size:13px;line-height:1.6}
+  .copy{position:absolute;top:8px;right:8px;background:#1e293b;border:1px solid #334155;color:#94a3b8;padding:2px 8px;border-radius:4px;font-size:11px;cursor:pointer}
+  .copy:hover{background:#334155;color:#e2e8f0}
+  a{color:#60a5fa;text-decoration:none}
+  a:hover{text-decoration:underline}
+  .file{font-size:11px;color:#64748b;background:rgba(148,163,184,.1);padding:1px 6px;border-radius:4px;margin-left:6px}
+  .note{font-size:12px;color:#64748b;margin-top:16px;padding-top:12px;border-top:1px solid #1e293b}
+  .summary{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+  .summary span{font-size:12px;padding:4px 10px;border-radius:6px;background:#1e293b}
+  .summary .g{color:#34d399}
+  .summary .y{color:#fbbf24}
+  .summary .o{color:#94a3b8}
+</style>
+</head>
+<body>
+
+<h1>🛡️ Mercury GP — Google & SEO/GEO/AIO Setup Guide</h1>
+<p style="color:#64748b;font-size:13px">مراحل اتصال سایت به سرویس‌های گوگل و بهینه‌سازی SEO/GEO/AIO</p>
+
+<div class="progress-text">Progress: 5 of 9 active (56%)</div>
+<div class="progress"><div class="progress-bar"></div></div>
+
+<div class="summary">
+  <span class="g">✅ 5 Active</span>
+  <span class="y">⏳ 2 Need Config</span>
+  <span class="o">⚪ 2 Optional</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>1. Google Search Console <span class="badge done">✅ Active</span></h2>
+<p class="file">src/app/layout.tsx</p>
+<p>Verify domain ownership and submit sitemap to Google.</p>
+<ol>
+  <li>Go to <a href="https://search.google.com/search-console" target="_blank">Google Search Console</a> and add your domain property (lasermercury.ir).</li>
+  <li>Choose <strong>"HTML tag"</strong> verification method. Copy the meta tag content value.</li>
+  <li>In <code>layout.tsx</code>, find the <code>verification.google</code> field and replace the placeholder:
+<pre><code>verification: {
+  google: "YOUR_VERIFICATION_CODE_HERE",  // ← paste here
+  yandex: "YOUR_YANDEX_CODE_HERE",
+}</code></pre>
+  </li>
+  <li>After deploying, click <strong>"Verify"</strong> in Search Console.</li>
+  <li>Go to <strong>Sitemaps</strong> and submit: <code>https://lasermercury.ir/sitemap.xml</code></li>
+  <li>Also submit RSS feed for faster content discovery: <code>https://lasermercury.ir/feed.xml</code></li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>2. Google Analytics 4 (GA4) <span class="badge pending">⏳ Needs Config</span></h2>
+<p class="file">src/app/layout.tsx</p>
+<p>Track visitors, pageviews, and user behavior.</p>
+<ol>
+  <li>Go to <a href="https://analytics.google.com/" target="_blank">Google Analytics</a> and create a GA4 property for lasermercury.ir.</li>
+  <li>Copy your Measurement ID (starts with <code>G-</code>).</li>
+  <li>In <code>layout.tsx</code>, uncomment the GA4 scripts and replace the ID:
+<pre><code>&lt;!-- In &lt;head&gt; section --&gt;
+&lt;Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ID"
+  strategy="afterInteractive"
+/&gt;
+
+&lt;!-- In &lt;body&gt; section --&gt;
+&lt;Script id="ga4-init" strategy="afterInteractive"&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-YOUR_ID");
+&lt;/Script&gt;</code></pre>
+  </li>
+  <li>Verify data appears in GA4 Realtime report within 24 hours.</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>3. Google Tag Manager (GTM) <span class="badge pending">⏳ Needs Config</span></h2>
+<p class="file">src/app/layout.tsx</p>
+<p>Centralized tag management for analytics, ads, and conversion tracking.</p>
+<ol>
+  <li>Go to <a href="https://tagmanager.google.com/" target="_blank">Google Tag Manager</a> and create a new container for lasermercury.ir.</li>
+  <li>Copy your Container ID (starts with <code>GTM-</code>).</li>
+  <li>In <code>layout.tsx</code>, uncomment the GTM scripts and replace the ID:
+<pre><code>&lt;!-- In &lt;head&gt; section --&gt;
+&lt;Script id="gtm" strategy="afterInteractive"&gt;
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-YOUR_ID');
+&lt;/Script&gt;</code></pre>
+  </li>
+  <li>Set up GA4, Facebook Pixel, and conversion events as tags inside GTM.</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>4. Bing Webmaster Tools <span class="badge optional">⚪ Optional</span></h2>
+<p>Submit sitemap to Bing for additional search coverage.</p>
+<ol>
+  <li>Go to <a href="https://www.bing.com/webmasters" target="_blank">Bing Webmaster Tools</a> and add your site.</li>
+  <li>Verify ownership using the HTML meta tag method.</li>
+  <li>Submit sitemap: <code>https://lasermercury.ir/sitemap.xml</code></li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>5. Structured Data (JSON-LD) <span class="badge done">✅ Active</span></h2>
+<p class="file">src/components/layout/json-ld.tsx</p>
+<p>20 JSON-LD schemas are already implemented. Verify with Google Rich Results Test.</p>
+<ol>
+  <li>Open <a href="https://search.google.com/test/rich-results" target="_blank">Rich Results Test</a> and enter your URL after deployment.</li>
+  <li>Verify these schemas are detected:
+    <br><code>Product</code> · <code>FAQPage</code> · <code>HowTo</code> · <code>BreadcrumbList</code> · <code>Organization</code> · <code>Article</code> ×4 · <code>Service</code> · <code>DefinedTermSet</code> · <code>ItemList</code> ×2 · <code>WebPage</code> · <code>AboutPage</code> · <code>ImageObject</code> · <code>WpHeader</code> · <code>WpFooter</code> · <code>WebSite</code></li>
+  <li>Also test with <a href="https://validator.schema.org/" target="_blank">Schema Markup Validator</a>.</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>6. RSS Feed & Sitemap <span class="badge done">✅ Active</span></h2>
+<p>RSS feed and sitemap are auto-generated. Verify they work.</p>
+<ul>
+  <li>Sitemap: <code>https://lasermercury.ir/sitemap.xml</code> — submit to Google & Bing</li>
+  <li>RSS Feed: <code>https://lasermercury.ir/feed.xml</code> — auto-discovery in &lt;head&gt;</li>
+  <li>Robots.txt: <code>https://lasermercury.ir/robots.txt</code> — rules for Google, Bing, GPTBot, ClaudeBot, PerplexityBot, ChatGPT-User, Google-Extended</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>7. GEO / AIO Optimization <span class="badge done">✅ Active</span></h2>
+<p class="file">src/components/layout/json-ld.tsx</p>
+<p>Optimized for AI-generated overviews (Google AI, ChatGPT, Claude, Perplexity).</p>
+<ol>
+  <li><code>WebPage.about[]</code> — 6 entities with Wikipedia links for entity salience</li>
+  <li><code>WebPage.mentions[]</code> — 15 named entities: journals, doctors, competitors for AIO citation</li>
+  <li><code>ItemList</code> schemas enumerate features and competitors for structured extraction</li>
+  <li>E-E-A-T signals: Author schema with expertise, Organization with contactPoint/knowsAbout/foundingDate, datePublished/dateModified</li>
+  <li><code>WpHeader</code>/<code>WpFooter</code> with SiteNavigationElement for full page structure</li>
+  <li>Robots.txt allows GPTBot, ClaudeBot, PerplexityBot, ChatGPT-User, Google-Extended</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>8. Meta Tags & Social <span class="badge done">✅ Active</span></h2>
+<p class="file">src/app/layout.tsx</p>
+<p>All meta tags, Open Graph, Twitter Cards, and social discovery are configured.</p>
+<ol>
+  <li><strong>Open Graph:</strong> title, description, image, type, locale, alternateLocale (fa_IR), emails</li>
+  <li><strong>Twitter:</strong> card (summary_large_image), title, description, images, site, creator</li>
+  <li><strong>hreflang:</strong> en, fa, x-default — for multilingual search results</li>
+  <li><strong>RSS auto-discovery</strong>, canonical URL, preconnect to Google fonts & GTM</li>
+  <li>Preview social sharing cards: <a href="https://developers.facebook.com/tools/debug/" target="_blank">Facebook Sharing Debugger</a></li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<h2>9. Performance & Monitoring <span class="badge optional">⚪ Optional</span></h2>
+<p>Optional tools to monitor SEO performance and page speed.</p>
+<ol>
+  <li><a href="https://pagespeed.web.dev/" target="_blank">Google PageSpeed Insights</a> — check Core Web Vitals after deployment</li>
+  <li><a href="https://search.google.com/search-console" target="_blank">Google Search Console</a> — monitor indexing, coverage, performance</li>
+  <li>Ahrefs / SEMrush — track keyword rankings and backlinks</li>
+</ol>
+
+<p class="note">After making changes, run <code>bun run build</code> and deploy. Final verification in Google Search Console.</p>
+
+</body>
+</html>

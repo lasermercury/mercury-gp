@@ -1,0 +1,63 @@
+{
+  "name": "Mercury GP — Premium At-Home IPL Hair-Reduction Device",
+  "short_name": "Mercury GP",
+  "description": "Discover Mercury GP, a refined at-home IPL hair-reduction device. Expert IPL guidance, safety tools, and treatment planning.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "dir": "ltr",
+  "lang": "en",
+  "background_color": "#0a1628",
+  "theme_color": "#3b7dd8",
+  "categories": ["health", "beauty", "lifestyle", "medical"],
+  "iarc_rating": "All",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/mercury-gp-product-ad.jpg",
+      "sizes": "720x720",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Mercury GP IPL Device"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Product Details",
+      "url": "/#product",
+      "description": "Explore Mercury GP specifications and features"
+    },
+    {
+      "name": "Safety Guide",
+      "url": "/#safety",
+      "description": "IPL safety guidelines and contraindications"
+    },
+    {
+      "name": "FAQ",
+      "url": "/#faq",
+      "description": "Frequently asked questions about IPL and Mercury GP"
+    },
+    {
+      "name": "Tools",
+      "url": "/#tools",
+      "description": "Skin type checker and suitability test"
+    }
+  ],
+  "related_applications": [],
+  "protocol_handlers": []
+}
