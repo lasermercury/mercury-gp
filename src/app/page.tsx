@@ -15,30 +15,33 @@ import GlossarySection from '@/components/sections/glossary-section';
 import FinalCta from '@/components/sections/final-cta';
 import { ToolPanelManager } from '@/components/tools/tool-panel-manager';
 import ProductDetailModal from '@/components/sections/product-detail-modal';
+import { AdminWrapper } from '@/components/admin/admin-wrapper';
 
 export default function HomePage() {
   return (
     <ErrorBoundary>
-      <div className="min-h-screen flex flex-col">
-        <SkipToContent />
-        <Navigation />
-        <main id="main-content" className="flex-1" tabIndex={-1}>
-          <Hero />
-          <Advantages />
-          <HowItWorks />
-          <ToolsSection />
-          <SafetySection />
-          <ComparisonSection />
-          <LearnSection />
-          <FaqSection />
-          <GlossarySection />
-          <FinalCta />
-        </main>
-        <Footer />
-        <ScrollToTop />
-        <ToolPanelManager />
-        <ProductDetailModal />
-      </div>
+      <AdminWrapper>
+        <div className="min-h-screen flex flex-col">
+          <SkipToContent />
+          <Navigation />
+          <main id="main-content" className="flex-1" tabIndex={-1}>
+            <Hero />
+            <Advantages />
+            <HowItWorks />
+            <ToolsSection />
+            <SafetySection />
+            <ComparisonSection />
+            <LearnSection />
+            <FaqSection />
+            <GlossarySection />
+            <FinalCta />
+          </main>
+          <Footer />
+          <ScrollToTop />
+          <ToolPanelManager />
+          <ProductDetailModal />
+        </div>
+      </AdminWrapper>
     </ErrorBoundary>
   );
 }
