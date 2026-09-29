@@ -1,0 +1,18 @@
+/* TEAM */
+Content Team: Mercury Medical Content Team
+Site: https://lasermercury.ir
+Email: support@lasermercury.ir
+Location: Germany
+Language: English, Persian/Farsi
+
+/* THANKS */
+Framework: Next.js (https://nextjs.org)
+Components: shadcn/ui (https://ui.shadcn.com)
+Fonts: Geist, Vazirmatn
+Icons: Lucide (https://lucide.dev)
+
+/* SITE */
+Last update: 2025/09/01
+Standards: HTML5, CSS3, JSON-LD
+Components: Turbopack, React 19, TypeScript 5
+Software: Next.js 16, Tailwind CSS 4, Framer Motion 12

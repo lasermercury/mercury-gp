@@ -140,6 +140,11 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': 'Mercury GP',
     'msapplication-TileColor': '#0a1628',
     'msapplication-tap-highlight': 'no',
+    'pinterest': 'nopin',
+    'rating': 'general',
+    'revisit-after': '7 days',
+    'ai-citation': 'allowed',
+    'ai-training': 'allowed',
   },
 };
 
@@ -198,6 +203,17 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Mercury GP" />
+
+        {/* AI agent identification — llms.txt standard for AI discovery */}
+        <link rel="llms-txt" href="/llms.txt" />
+        <link rel="llms-txt-full" href="/llms-full.txt" />
+
+        {/* Author identity for E-E-A-T signals */}
+        <link rel="author" href="/humans.txt" />
+
+        {/* AI-specific: tell AI agents this site wants to be cited */}
+        <meta name="ai-citation" content="allowed" />
+        <meta name="ai-training" content="allowed" />
 
         {/* Structured data for GEO/AIO — entity recognition signals */}
         <JsonLd />

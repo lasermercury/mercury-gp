@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mercury GP IPL Guide API",
+    "version": "1.0.0",
+    "description": "API for accessing Mercury GP IPL device information, safety guidance, treatment protocols, FAQ answers, and product specifications."
+  },
+  "servers": [
+    {
+      "url": "https://lasermercury.ir"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get site information",
+        "description": "Returns the complete Mercury GP IPL resource including product overview, technology explanation, safety guidance, FAQ, and glossary.",
+        "responses": {
+          "200": {
+            "description": "Complete site information for Mercury GP IPL device"
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Get AI-discoverable site summary",
+        "description": "Returns the llms.txt file — a machine-readable summary of the site's content and structure for AI engines.",
+        "responses": {
+          "200": {
+            "description": "Machine-readable site summary"
+          }
+        }
+      }
+    },
+    "/llms-full.txt": {
+      "get": {
+        "summary": "Get full AI content",
+        "description": "Returns the llms-full.txt file — detailed content excerpts optimized for AI citation and reference.",
+        "responses": {
+          "200": {
+            "description": "Full detailed content for AI systems"
+          }
+        }
+      }
+    }
+  }
+}

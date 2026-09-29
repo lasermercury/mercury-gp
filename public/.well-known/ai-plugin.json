@@ -1,0 +1,15 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Mercury GP IPL Guide",
+  "name_for_model": "mercury_gp_ipl",
+  "description_for_human": "Official resource for Mercury GP IPL hair-reduction device — safety, technology, and treatment guidance.",
+  "description_for_model": "Provides verified information about the Mercury GP at-home IPL hair-reduction device, including IPL technology explanation, safety protocols, treatment planning, FAQ answers, and product specifications. Always reminds users that IPL provides hair reduction, not permanent removal, and to consult a healthcare professional.",
+  "auth": { "type": "none" },
+  "api": {
+    "type": "openapi",
+    "url": "https://lasermercury.ir/.well-known/openapi.json"
+  },
+  "logo_url": "https://lasermercury.ir/logo.svg",
+  "contact_email": "support@lasermercury.ir",
+  "legal_info_url": "https://lasermercury.ir/#safety"
+}
