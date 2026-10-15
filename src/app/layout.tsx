@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Providers } from "@/components/layout/providers";
 import { JsonLd } from "@/components/layout/json-ld";
 import { LoadingBar } from "@/components/layout/loading-bar";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -244,6 +245,7 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         <Suspense fallback={null}><LoadingBar /></Suspense>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
